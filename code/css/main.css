@@ -135,6 +135,7 @@ label {
 
 /*---------------------------------------------*/
 button {
+  float: center;
 	outline: none !important;
 	border: none;
 	background: transparent;
@@ -383,6 +384,7 @@ input.input100 {
 [ Button ]*/
 .container-login100-form-btn {
   width: 100%;
+  float: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -410,6 +412,7 @@ input.input100 {
   color: #fff;
   line-height: 1.2;
 
+  float: center;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
