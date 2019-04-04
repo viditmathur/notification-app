@@ -161,3 +161,63 @@ request.query("update CHILD set WEIGHT='"+req.body.WEIGHT+"', HEIGHT ='"+req.bod
     }
 });
 });
+
+app.get('/Login/:id',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+
+    var request = new sql.Request();
+    
+    request.query("select * from LOGIN where EMAIL_ID="+req.params.id+";",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+
+app.delete('/Login/:id',  (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    request.query("delete * from LOGIN where EMAIL_ID="+req.params.id+";",(err,recordset)=>{
+    if(err)
+    {console.log("no data found");
+
+    }
+    else
+    {res.send(doctor);
+    }
+
+    });
+});
+
+app.post('/Login', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("insert into LOGIN values('"+req.body.EMAIL_ID+"','"+req.body.PASSWORD+"','"+req.body.ROLE+"');", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Credentials have been added");
+        console.log(recordset);
+    }
+});
+});
+
+app.put('/Login/:id', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("update LOGIN set PASSWORD='"+req.body.PASSWORD+"', ROLE ='"+req.body.ROLE+"' where EMAIL_ID='"+req.params.id+";", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Login Details have been modified");
+        console.log(recordset);
+    }
+});
+});
