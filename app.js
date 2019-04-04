@@ -41,6 +41,7 @@ app.get("/",(req,res,next)=>{
         
         });
         
+//Doctor routes
 app.get('/Doctor/:id',(req,res,next)=>{
     	res.header("Access-Control-Allow-Origin","*");
 
@@ -101,7 +102,8 @@ app.put('/Doctor/:id', function (req, res) {
     });
 });
 
-        
+
+//Child routes        
 app.get('/Child/:id',(req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
 
@@ -162,6 +164,8 @@ request.query("update CHILD set WEIGHT='"+req.body.WEIGHT+"', HEIGHT ='"+req.bod
 });
 });
 
+
+//Login routes
 app.get('/Login/:id',(req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
 
