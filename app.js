@@ -1,7 +1,7 @@
 var express=require('express');
 var app=express();
 var bodyParser=require('body-parser');
-var sql = require('mysql');
+var sql = require('mssql');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -11,23 +11,24 @@ app.use(bodyParser.urlencoded({
 
 //var dbURL=process.env.dbURL;
 
-var con = sql.createConnection({
-    host: "localhost",
+var config = {
+    server: process.env.SERVER,
+    database: process.env.DATABASE,
     user: process.env.USER,
     password: process.env.PASSWORD
-  });
-  
+  };
+ /* 
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
   });  
-  /*
-  sql.connect(dbURL,function(err) {
+*/  
+  sql.connect(config,function(err) {
     if (err) throw err;
     console.log("Connected!");
   });
 
-*/
+
 var port=process.env.port||5000;
 app.listen(port,function()
            {
@@ -44,7 +45,6 @@ app.get("/",(req,res,next)=>{
 //Doctor routes
 app.get('/Doctor/:id',(req,res,next)=>{
     	res.header("Access-Control-Allow-Origin","*");
-
 	    var request = new sql.Request();
 		
 		request.query("select * from DOCS where DOC_UID="+req.params.id+";",(err,recordset)=>{
