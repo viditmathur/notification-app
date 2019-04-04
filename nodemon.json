@@ -1,0 +1,10 @@
+{
+    "env":{
+        "JWT_KEY":"secretKey",
+        "limit":10,
+        "dburl":"",
+        "port":8080,
+        "USER":"",
+        "PASSWORD":""
+    }
+}
