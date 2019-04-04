@@ -81,7 +81,7 @@ app.post('/Doctor', function (req, res) {
             console.log(err);}
         else
         {
-            res.send("Doctor has  been added");
+            res.send("Doctor has  been Modified");
             console.log(recordset);
         }
     });
@@ -99,4 +99,65 @@ app.put('/Doctor/:id', function (req, res) {
             console.log(recordset);
         }
     });
+});
+
+        
+app.get('/Child/:id',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+
+    var request = new sql.Request();
+    
+    request.query("select * from CHILD where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+
+app.delete('/Child/:id',  (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    request.query("delete * from CHILD where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+    if(err)
+    {console.log("no data found");
+
+    }
+    else
+    {res.send(doctor);
+    }
+
+    });
+});
+
+app.post('/Child', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("insert into CHILD values('"+req.body.CHILD_ID+"','"+req.body.GENDER+"','"+req.body.TIMING+"','"+req.body.DATEDAY+"','"+req.body.HEIGHT+"','"+req.body.WEIGHT+"');", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Child has  been added");
+        console.log(recordset);
+    }
+});
+});
+
+app.put('/Child/:id', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("update CHILD set WEIGHT='"+req.body.WEIGHT+"', HEIGHT ='"+req.body.HEIGHT+"', TIMEING ='"+req.body.TIMEING+"', DATEDAY='"+req.body.DATEDAY+ "' where CHILD_ID='"+req.params.id+";", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Child Details have been modified");
+        console.log(recordset);
+    }
+});
 });
