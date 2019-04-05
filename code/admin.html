@@ -12,6 +12,64 @@
 <!--===============================================================================================-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+	function postChildDetails(){
+		var childId=document.getElementsByName('child_id').value;
+		var fName=document.getElementsByName('f_name').value;
+		var mName=document.getElementsByName('m_name').value;
+		var docUid=document.getElementsByName('docs_uid').value;
+		var emailId=document.getElementsByName('email_id').value;
+		var address=document.getElementsByName('address').value;
+		var adharCard=document.getElementsByName('adhar_card').value;
+		var timing=document.getElementsByName('timing').value;
+		var dateDay=document.getElementsByName('date_born').value;
+		var password=document.getElementsByName('pasword').value;
+		var height=document.getElementsByName('height').value;
+		var weight=document.getElementsByName('weight').value;
+		var gender=document.getElementsByName('gender').value;
+		var datatosend={
+			'CHILD_ID':childId,
+			'DOC_UID':docUid,
+			'F_NAME':fName,
+			'M_NAME':mName,
+			'EMAIL_ID':emailId,
+			'ADDRESS':address,
+			'ADHAR_CARD':adharCard,
+			'PASSWORD':password	
+		};
+		var datatosend2={
+			'TIMING':timing,
+			'DATEDAY':dateDay,
+			'CHILD_ID':childId,
+			'HEIGHT':height,
+			'WEIGHT':weight,
+			'GENDER':gender
+		}
+		$.ajax({
+							url: 'http://localhost:'+process.env.port+'/Detail',
+							type: 'POST',
+							dataType: 'json',
+							data:datatosend,
+							success: function(res){
+							alert('Details data has been added to database');
+					}
+					});
+		$.ajax({
+				url: 'http://localhost:'+process.env.port+'/Child',
+				type: 'POST',
+				dataType: 'json',
+				data:datatosend2,
+				success: function(res){
+				alert('Child data has been added to database');
+		}
+		});
+	}
+	</script>
 </head>
 <body>
 	<div class="w3-bar w3-border w3-light-grey">
@@ -80,7 +138,7 @@
 
 					<div class="wrap-input100 validate-input m-b-26" data-validate="date no is required">
 						<span class="label-input100">Date born</span>
-						<input class="input100" type="date" name="adhar_card" placeholder="Enter date">
+						<input class="input100" type="date" name="date_born" placeholder="Enter date">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -93,7 +151,7 @@
 					
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button onclick="postChildDetails()" class="login100-form-btn">
 							Create
 						</button>
 					</div>

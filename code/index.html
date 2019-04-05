@@ -10,26 +10,48 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
 <script type="text/javascript">
+//Login Authentication for user.
 function login()
 {
 	var username=document.getElementsById('username').values;
 	var password=document.getElementsById('password').values;
-	if(username=="user")
-	{if (password="pwd")
-	{
-		alert("succeful login");
-		location.href('admin.html');
-	}
-	}
-	else
-	{
-		alert("invalid credentials");
-		document.getElementsById('username').value='';
-		document.getElementsById('password').value='';
-		
-	}
+    $.ajax({
+        url: 'http://localhost:'+process.env.port+'/Login/'+username,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res){
+        var data={};
+        data=res;
+        if(res.password==password)
+        {
+            if(data.ROLE=='ADMIN')
+            {
+                location.href('admin.html');
+            }
+            else{
+                if(data.ROLE=='DOCTOR')
+                {
+                    location.href('doctorview.html');
+                }
+                else{
+                    location.href('childview.html');        
+                }
+            }
+        }
+        else{
+            alert('Authentication Failed');
+            location.href('index.html');
+        }
+        }
+    });
 }
+
 </script>
 </head>
 <body>
