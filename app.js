@@ -267,3 +267,153 @@ request.query("update LOGIN set PASSWORD='"+req.body.PASSWORD+"', ROLE ='"+req.b
     }
 });
 });
+
+//Detail routes
+app.get('/Detail/:id',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+
+    var request = new sql.Request();
+    
+    request.query("select * from DETAIL where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+app.get('/Detail/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from DETAIL ;",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+app.delete('/Detail/:id',  (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    request.query("delete * from DETAIL where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+    if(err)
+    {console.log("no data found");
+
+    }
+    else
+    {res.send(doctor);
+    }
+
+    });
+});
+
+app.post('/Detail', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("insert into DETAIL values('"+req.body.F_NAME+"','"+req.body.M_NAME+"','"+req.body.CHILD_ID+"','"+req.body.DOC_UID+"','"+req.body.EMAIL_ID+"','"+req.body.ADDRESS+"','"+req.body.ADHAR_CARD+"');", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Details have been added");
+        console.log(recordset);
+    }
+});
+});
+
+app.put('/Detail/:id', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("update DETAIL set F_NAME='"+req.body.F_NAME+"', M_NAME ='"+req.body.M_NAME+"', DOC_UID ='"+req.body.DOC_UID+"', EMAIL_ID ='"+req.body.EMAIL_ID+"', ADDRESS ='"+req.body.ADDRESS+"', ADHAR_CARD ='"+req.body.ADHAR_CARD+"' where CHILD_ID='"+req.params.id+";", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Detail have been modified");
+        console.log(recordset);
+    }
+});
+});
+
+//Vac routes
+app.get('/Vac/:id',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+
+    var request = new sql.Request();
+    
+    request.query("select * from VAC where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+app.get('/Vac/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from VAC ;",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
+
+app.delete('/Vac/:id',  (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    request.query("delete * from VAC where CHILD_ID="+req.params.id+";",(err,recordset)=>{
+    if(err)
+    {console.log("no data found");
+
+    }
+    else
+    {res.send(doctor);
+    }
+
+    });
+});
+
+app.post('/Vac', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("insert into VAC values('"+req.body.VAC_NO+"','"+req.body.CHILD_ID+"');", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Vacs have been added");
+        console.log(recordset);
+    }
+});
+});
+
+app.put('/Vac/:id', function (req, res) {
+res.header("Access-Control-Allow-Origin","*");
+var request = new sql.Request();
+request.query("update VAC set VAC_NO='"+req.body.VAC_NO+"' where CHILD_ID='"+req.params.id+";", function (err, recordset){
+    if (err){
+        console.log(err);}
+    else
+    {
+        res.send("Vac have been modified");
+        console.log(recordset);
+    }
+});
+});
