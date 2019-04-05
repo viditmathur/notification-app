@@ -58,6 +58,20 @@ app.get('/Doctor/:id',(req,res,next)=>{
 		
 });
 
+app.get('/Doctor/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from DOCS ;",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
 
 app.delete('/Doctor/:id',  (req,res,next)=>{
         res.header("Access-Control-Allow-Origin","*");
@@ -120,6 +134,20 @@ app.get('/Child/:id',(req,res,next)=>{
     
 });
 
+app.get('/Child/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from CHILD ;",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
 
 app.delete('/Child/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
@@ -182,6 +210,20 @@ app.get('/Login/:id',(req,res,next)=>{
     
 });
 
+app.get('/Login/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from LOGIN ;",(err,recordset)=>{
+        if(err){
+    console.log(error);}
+    else
+   { res.status(302).send(recordset);
+   }
+    
+    })
+    
+});
 
 app.delete('/Login/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");

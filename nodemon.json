@@ -4,9 +4,9 @@
         "limit":10,
         "dburl":"",
         "port":8080,
-        "USER":"root",
-        "PASSWORD":"root",
-        "SERVER":"",
-        "DATABASE":""
+        "USER":"vidit",
+        "PASSWORD":"password",
+        "SERVER":"CYG336",
+        "DATABASE":"DOCTORS_VACTINATION"
     }
 }
