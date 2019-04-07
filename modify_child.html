@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin</title>
+	<meta charset="UTF-8">
+	<meta id="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+	function modify(){
+		var childId=document.getElementById('child_id').value;
+        var url1='http://localhost:8080/Detail/'+childId;
+        //data to send needs to be updated
+        
+        var datatosend={
+		};
+		$.ajax({
+							url: url1,
+							type: 'PUT',
+							dataType: 'json',
+							data:datatosend,
+							success: function(res){
+							alert('Details data is reciving from database');
+					}
+					});
+	}
+	</script>
+</head>
+<body background="images/maxres.jpg">
+        
+    <nav>
+        <a href="admin.html" >Home</a>
+        <a href="doctor_create.html" >New Doctor</a>
+        <a href="modify_doctor.html" >Modify doctor</a>
+        <a href="delete_doctor.html" >Delete doctor</a>
+        <a href="modify_child.html" >Modify child</a>
+        <a href="delete_child.html" >Delete child</a>
+        <div style="float:right"><a href="index.html" ]>Logout</a></div>  
+          </nav>
+
+            <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    Modify
+                                </span>
+                            </div>
+            
+                            <form class="login100-form validate-form">
+                                <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
+                                    <span class="label-input100">Child id</span>
+                                    <input class="input100" type="text" id="Child_id" placeholder="Enter Child id">
+                                    <span class="focus-input100"></span>
+                                </div>                                
+            
+                                <div class="container-login100-form-btn">
+                                    <button onclick="modify()" class="login100-form-btn">
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    Modify
+                                </span>
+                            </div>
+            
+
+                                <form class="login100-form validate-form">
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Father id is required">
+                                        <span class="label-input100">Father id</span>
+                                        <input class="input100" type="text" id="f_id" placeholder="Enter Father id">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Mother id is required">
+                                        <span class="label-input100">Mother id</span>
+                                        <input class="input100" type="text" id="m_id" placeholder="Enter Mother id">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
+                                        <span class="label-input100">Child id</span>
+                                        <input class="input100" type="text" id="child_id" placeholder="Enter Child id">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="height is required">
+                                        <span class="label-input100">Height</span>
+                                        <input class="input100" type="text" id="height" placeholder="Enter Height">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Weight id is required">
+                                        <span class="label-input100">weight</span>
+                                        <input class="input100" type="text" id="weight" placeholder="Enter Weight">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                    
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
+                                        <span class="label-input100">Doctor id</span>
+                                        <input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Email id is required">
+                                        <span class="label-input100">Email id</span>
+                                        <input class="input100" type="email" id="email_id" placeholder="Enter Email id">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Address is required">
+                                        <span class="label-input100">Address</span>
+                                        <input class="input100" type="text" id="address" placeholder="Enter Address">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Addhar card no is required">
+                                        <span class="label-input100">Adhar card no</span>
+                                        <input class="input100" type="text" id="adhar_card" placeholder="Enter Adhar card no">
+                                        <span class="focus-input100"></span>
+                                    </div>
+                
+                                    
+                
+                                   
+                
+                                    
+                
+                                   
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+</body>
+</html>

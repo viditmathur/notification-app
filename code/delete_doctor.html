@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+	function delet(){
+		var docUid=document.getElementById('docs_uid').value;
+		var datatosend={
+			'DOC_UID':docUid,		
+		};
+		
+		$.ajax({
+							url: 'http://localhost:'+process.env.port+'/Detail',
+							type: 'DELETE',
+							dataType: 'json',
+							data:datatosend,
+							success: function(res){
+							alert('Details data deleting database');
+					}
+					});
+	}
+	</script>
+</head>
+<body background="images/maxres.jpg">
+        
+    <nav>
+        <a href="admin.html" >Home</a>
+        <a href="doctor_create.html" >New Doctor</a>
+        <a href="modify_doctor.html" >Modify doctor</a>
+        <a href="delete_doctor.html" >Delete doctor</a>
+        <a href="modify_child.html" >Modify child</a>
+        <a href="delete_child.html" >Delete child</a>
+        <div style="float:right"><a href="index.html" ]>Logout</a></div>  
+          </nav>
+
+            <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    Delete
+                                </span>
+                            </div>
+            
+                            <form class="login100-form validate-form">
+                                <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
+                                    <span class="label-input100">Doctor id</span>
+                                    <input class="input100" type="text" name="doctor_uid" placeholder="Enter doctor id">
+                                    <span class="focus-input100"></span>
+                                </div>                                
+            
+                                <div class="container-login100-form-btn">
+                                    <button onclick="delet()" class="login100-form-btn">
+                                        Delete
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+</body>
+</html>

@@ -50,7 +50,7 @@
 			'GENDER':gender
 		}
 		$.ajax({
-							url: 'http://localhost:8080/Detail',
+							url: 'http://localhost:'+process.env.port+'/Detail',
 							type: 'POST',
 							dataType: 'json',
 							data:datatosend,
@@ -59,7 +59,7 @@
 					}
 					});
 		$.ajax({
-				url: 'http://localhost:8080/Child',
+				url: 'http://localhost:'+process.env.port+'/Child',
 				type: 'POST',
 				dataType: 'json',
 				data:datatosend2,

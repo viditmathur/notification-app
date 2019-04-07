@@ -21,9 +21,8 @@ function login()
 {
 	var userid=document.getElementsById('userid').values;
 	var password=document.getElementsById('password').values;
-    var url1='http://localhost:8080/Login/'+userid;
-	$.ajax({
-        url: url1,
+    $.ajax({
+        url: 'http://localhost:'+process.env.port+'/Login/'+userid,
         type: 'GET',
         dataType: 'json',
         success: function(res){
