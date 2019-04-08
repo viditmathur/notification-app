@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	function delet(){
 		var docUid=document.getElementById('docs_uid').value;
-		var url1='http://localhost:'+process.env.port+'/Doctor/'+docUid;
+		var url1='http://localhost:8080/Doctor/'+docUid;
 		
 		$.ajax({
 							url: url1,
