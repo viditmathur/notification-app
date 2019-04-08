@@ -49,8 +49,11 @@
 			'WEIGHT':weight,
 			'GENDER':gender
 		}
+		var url1='http://localhost:8008/Detail';
+		var url2='http://localhost:8080/Child';
+		
 		$.ajax({
-							url: 'http://localhost:8080/Detail',
+							url: url1,
 							type: 'POST',
 							dataType: 'json',
 							data:datatosend,
@@ -59,7 +62,7 @@
 					}
 					});
 		$.ajax({
-				url: 'http://localhost:8080/Child',
+				url: url2,
 				type: 'POST',
 				dataType: 'json',
 				data:datatosend2,

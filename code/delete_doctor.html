@@ -18,17 +18,14 @@
 <script type="text/javascript">
 	function delet(){
 		var docUid=document.getElementById('docs_uid').value;
-		var datatosend={
-			'DOC_UID':docUid,		
-		};
+		var url1='http://localhost:8080/Doctor/'+docUid;
 		
 		$.ajax({
-							url: 'http://localhost:'+process.env.port+'/Detail',
+							url: url1,
 							type: 'DELETE',
 							dataType: 'json',
-							data:datatosend,
 							success: function(res){
-							alert('Details data deleting database');
+							alert('Doctors data deleting database');
 					}
 					});
 	}

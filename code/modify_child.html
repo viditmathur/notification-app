@@ -19,12 +19,16 @@
 <script type="text/javascript">
 	function modify(){
 		var childId=document.getElementById('child_id').value;
-        var url1='http://localhost:'+process.env.port+'/Detail';
-        var url2='http://localhost:'+process.env.port+'/Child';
+        var url1='http://localhost:8080/Detail/'+childId;
+        //data to send needs to be updated
+        
+        var datatosend={
+		};
 		$.ajax({
-							url: 'http://localhost:'+process.env.port+'/Detail',
+							url: url1,
 							type: 'PUT',
 							dataType: 'json',
+							data:datatosend,
 							success: function(res){
 							alert('Details data is reciving from database');
 					}

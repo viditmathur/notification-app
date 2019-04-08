@@ -19,10 +19,13 @@
 <script type="text/javascript">
 	function modify(){
 		var docUid=document.getElementById('docs_uid').value;
-        var url2='http://localhost:'+process.env.port+'/Doctor/'+docUid;
+        var url1='http://localhost:8080/Detail/'+docUid;
+
+		var datatosend={
+		};
 		
 		$.ajax({
-							url: url2,
+							url: url1,
 							type: 'PUT',
 							dataType: 'json',
 							data:datatosend,
