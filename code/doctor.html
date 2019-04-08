@@ -19,10 +19,10 @@
 </script>
 <script type="text/javascript">
 function postDoctorDetails(){
-	var docId=document.getElementsByName('docs_uid').value;
-	var docDesignation=document.getElementsByName('designation').value;
-	var docEmailId=document.getElementsByName('email_id').value;
-	var docPassword=document.getElementsByName('password').value;
+	var docId=document.getElementById('docs_uid').value;
+	var docDesignation=document.getElementById('designation').value;
+	var docEmailId=document.getElementById('email_id').value;
+	var docPassword=document.getElementById('password').value;
 	var data={
 		'DOC_UID':docId,
 		'DESIGNATION':docDesignation,
@@ -60,25 +60,25 @@ function postDoctorDetails(){
 				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
 						<span class="label-input100">Doctor id</span>
-						<input class="input100" type="text" name="docs_uid" placeholder="Enter Doctor id">
+						<input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Doctor Designation is required">
 						<span class="label-input100">Doctor Designation</span>
-						<input class="input100" type="text" name="designation" placeholder="Enter Doctor Designation">
+						<input class="input100" type="text" id="designation" placeholder="Enter Doctor Designation">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Email id is required">
 						<span class="label-input100">Email id</span>
-						<input class="input100" type="email" name="email_id" placeholder="Enter Email id">
+						<input class="input100" type="email" id="email_id" placeholder="Enter Email id">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password" placeholder="Enter password">
+						<input class="input100" type="password" id="password" placeholder="Enter password">
 						<span class="focus-input100"></span>
 					</div>
 

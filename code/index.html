@@ -19,8 +19,8 @@
 //Login Authentication for user.
 function login()
 {
-	var userid=document.getElementsById('userid').values;
-	var password=document.getElementsById('password').values;
+	var userid=document.getElementById('userid').value;
+	var password=document.getElementById('password').value;
 	var url1='http://localhost:8080/Login/'+userid;
 	$.ajax({
         url: url1,
