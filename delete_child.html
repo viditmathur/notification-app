@@ -18,8 +18,8 @@
 <script type="text/javascript">
 	function delet(){
 		var childId=document.getElementById('child_id').value;
-		var url1='http://localhost:8080/Detail/'+childId;
-		var url2='http://localhost:8080/Child/'+childId;
+		var url1='http://localhost:'+process.env.port+'/Detail/'+childId;
+		var url2='http://localhost:'+process.env.port+'/Child/'+childId;
 		$.ajax({
 							url: url1,
 							type: 'DELETE',
