@@ -29,7 +29,8 @@ var config = {
     console.log("Connected!");
   });
 
-
+  app.use(express.static('css'))
+  app.use(express.static('code'))
 var port=process.env.port||5000;
 app.listen(port,function()
            {
