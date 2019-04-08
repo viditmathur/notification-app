@@ -22,11 +22,13 @@ function postDoctorDetails(){
 	var docDesignation=document.getElementById('designation').value;
 	var docEmailId=document.getElementById('email_id').value;
 	var docPassword=document.getElementById('password').value;
-	var data={
+	var docName=document.getElementById('name').value;
+	var datatosend={
 		'DOC_UID':docId,
 		'DESIGNATION':docDesignation,
 		'EMAIL_ID':docEmailId,
-		'PASSWORD':docPassword
+		'PASSWORD':docPassword,
+		'DNAME':docName
 	};
 	var url1='http://localhost:8080/Doctor';
 	$.ajax({
@@ -64,6 +66,12 @@ function postDoctorDetails(){
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
 						<span class="label-input100">Doctor id</span>
 						<input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Doctor Name is required">
+						<span class="label-input100">Doctor Name</span>
+						<input class="input100" type="text" id="name" placeholder="Enter Doctor Name">
 						<span class="focus-input100"></span>
 					</div>
 
