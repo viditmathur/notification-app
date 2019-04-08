@@ -33,7 +33,7 @@ var config = {
 var port=process.env.port||5000;
 app.listen(port,function()
            {
-    console.log('server has been started');	
+    console.log('server has been started at port '+port);	
     }
 )
 
