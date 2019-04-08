@@ -28,8 +28,9 @@ function postDoctorDetails(){
 		'EMAIL_ID':docEmailId,
 		'PASSWORD':docPassword
 	};
+	var url1='http://localhost:'+process.env.port+'/Doctor';
 	$.ajax({
-            url: 'http://localhost:8080/Doctor',
+            url: url1,
             type: 'POST',
             dataType: 'json',
 						data:datatosend,
