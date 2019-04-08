@@ -4,6 +4,12 @@ var bodyParser=require('body-parser');
 var sql = require('mssql');
 var cors = require('cors');
 
+
+const sgMail = require('@sendgrid/mail');
+
+
+
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended:true
@@ -49,7 +55,9 @@ app.get("/",(req,res,next)=>{
             res.send("this is just to check whether the services are working or not");
         
         });
-    
+ 
+       
+
 //Doctor routes
 app.get('/Doctor/:id',(req,res,next)=>{
     	res.header("Access-Control-Allow-Origin","*");
@@ -104,7 +112,16 @@ app.post('/Doctor', function (req, res) {
             console.log(err);}
         else
         {
-            res.send("Doctor has  been Modified");
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+          to: req.body.EMAIL_ID,
+          from: 'smrth2102@gmail.com',
+          subject: "Doctor's details have been added to database",
+          text: process.env.textmessagefordoctor,
+          html: '<strong>WELCOME</strong>',
+        };
+        sgMail.send(msg);
+            res.send("Doctor has  been Created");
             console.log(recordset);
         }
     });
@@ -180,6 +197,7 @@ request.query("insert into CHILD values('"+req.body.CHILD_ID+"','"+req.body.GEND
         console.log(err);}
     else
     {
+        
         res.send("Child has  been added");
         console.log(recordset);
     }
@@ -256,6 +274,16 @@ request.query("insert into LOGIN values('"+req.body.EMAIL_ID+"','"+req.body.PASS
         console.log(err);}
     else
     {
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+          to: req.body.EMAIL_ID,
+          from: 'smrth2102@gmail.com',
+          subject: 'New Login Details have been added to Database',
+          text: process.env.textmessageforlogin,
+          html: '<strong>WELOME</strong>',
+        };
+        sgMail.send(msg);
+        
         res.send("Credentials have been added");
         console.log(recordset);
     }
@@ -331,6 +359,16 @@ request.query("insert into DETAIL values('"+req.body.F_NAME+"','"+req.body.M_NAM
         console.log(err);}
     else
     {
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+          to: req.body.EMAIL_ID,
+          from: 'smrth2102@gmail.com',
+          subject: 'Child Details have been added to Database',
+          text: process.env.textmessageforchild,
+          html: '<strong>WELOME</strong>',
+        };
+        sgMail.send(msg);
+        
         res.send("Details have been added");
         console.log(recordset);
     }
