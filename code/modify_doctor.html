@@ -17,11 +17,32 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-	function modify(){
-		var docUid=document.getElementById('docs_uid').value;
-        var url1='http://localhost:8080/Detail/'+docUid;
-
+    var docUid=document.getElementById('docs_uid').value;
+    var url1='http://localhost:8080/Doctor/'+docUid;
+    function modify(){
+        var datarec={};
+	
+        
+        $.ajax({
+							url: url1,
+							type: 'GET',
+							dataType: 'json',
+							success: function(res){
+                                datarec=res;
+                                Document.getElementById('docs_uid').value=datarec.DOC_UID;
+                                Document.getElementById('name').value=datarec.NAME;
+                                Document.getElementById('email_id').value=datarec.EMAIL_ID;
+                                Document.getElementById('designation').value=datarec.DESIGNATION;
+                                
+					}
+                    });
+        }
+        function submit(){
 		var datatosend={
+            "DOC_UID":Document.getElementById('docs_uid').value,
+            "NAME":Document.getElementById('name').value,
+            "EMAIL_ID":Document.getElementById('email_id').value,
+            "DESIGNATION":Document.getElementById('designation').value
 		};
 		
 		$.ajax({
@@ -90,6 +111,12 @@
                                     <input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
                                     <span class="focus-input100"></span>
                                 </div>
+
+                                <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor name is required">
+                                    <span class="label-input100">Doctor Name</span>
+                                    <input class="input100" type="text" id="name" placeholder="Enter Doctor name">
+                                    <span class="focus-input100"></span>
+                                </div>
             
                                 <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor Designation is required">
                                     <span class="label-input100">Doctor Designation</span>
@@ -102,13 +129,11 @@
                                     <input class="input100" type="email" id="email_id" placeholder="Enter Email id">
                                     <span class="focus-input100"></span>
                                 </div>
-            
-                                <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-                                    <span class="label-input100">Password</span>
-                                    <input class="input100" type="password" id="password" placeholder="Enter password">
-                                    <span class="focus-input100"></span>
+                                <div class="container-login100-form-btn">
+                                    <button onclick="submit()" class="login100-form-btn">
+                                        Modify
+                                    </button>
                                 </div>
-            
                             </form>
 
                             </div>
