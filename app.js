@@ -67,7 +67,7 @@ app.get('/Doctor/:id',(req,res,next)=>{
 			if(err){
 		console.log(error);}
 		else
-       { res.status(302).send(recordset);
+       { res.status(302).send(recordset.recordset[0]);
 	   }
 		
 		})
@@ -92,7 +92,7 @@ app.get('/Doctor/',(req,res,next)=>{
 app.delete('/Doctor/:id',  (req,res,next)=>{
         res.header("Access-Control-Allow-Origin","*");
         var request = new sql.Request();
-        request.query("delete * from DOCS where DOC_UID='"+req.params.id+"';",(err,recordset)=>{
+        request.query("delete  from DOCS where DOC_UID='"+req.params.id+"';",(err,recordset)=>{
         if(err)
         {console.log("no data found");
 
@@ -152,7 +152,7 @@ app.get('/Child/:id',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset);
+   { res.status(302).send(recordset.recordset[0]);
    }
     
     })
@@ -177,7 +177,7 @@ app.get('/Child/',(req,res,next)=>{
 app.delete('/Child/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
     var request = new sql.Request();
-    request.query("delete * from CHILD where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
+    request.query("delete  from CHILD where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
     if(err)
     {console.log("no data found");
 
@@ -229,7 +229,7 @@ app.get('/Login/:id',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset);
+   { res.status(302).send(recordset.recordset[0]);
    }
     
     })
@@ -254,7 +254,7 @@ app.get('/Login/',(req,res,next)=>{
 app.delete('/Login/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
     var request = new sql.Request();
-    request.query("delete * from LOGIN where EMAIL_ID='"+req.params.id+"';",(err,recordset)=>{
+    request.query("delete  from LOGIN where EMAIL_ID='"+req.params.id+"';",(err,recordset)=>{
     if(err)
     {console.log("no data found");
 
@@ -312,9 +312,9 @@ app.get('/Detail/:id',(req,res,next)=>{
     
     request.query("select * from DETAIL where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
         if(err){
-    console.log(error);}
+    console.log(err);}
     else
-   { res.status(302).send(recordset);
+   { res.status(302).send(recordset.recordset[0]);
    }
     
     })
@@ -327,7 +327,7 @@ app.get('/Detail/',(req,res,next)=>{
     
     request.query("select * from DETAIL ;",(err,recordset)=>{
         if(err){
-    console.log(error);}
+    console.log(err);}
     else
    { res.status(302).send(recordset);
    }
@@ -339,7 +339,7 @@ app.get('/Detail/',(req,res,next)=>{
 app.delete('/Detail/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
     var request = new sql.Request();
-    request.query("delete * from DETAIL where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
+    request.query("delete  from DETAIL where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
     if(err)
     {console.log("no data found");
 
@@ -399,7 +399,7 @@ app.get('/Vac/:id',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset);
+   { res.status(302).send(recordset.recordset[0]);
    }
     
     })
@@ -424,7 +424,7 @@ app.get('/Vac/',(req,res,next)=>{
 app.delete('/Vac/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
     var request = new sql.Request();
-    request.query("delete * from VAC where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
+    request.query("delete  from VAC where CHILD_ID='"+req.params.id+"';",(err,recordset)=>{
     if(err)
     {console.log("no data found");
 
@@ -439,7 +439,7 @@ app.delete('/Vac/:id',  (req,res,next)=>{
 app.post('/Vac', function (req, res) {
 res.header("Access-Control-Allow-Origin","*");
 var request = new sql.Request();
-request.query("insert into VAC values('"+req.body.VAC_NO+"','"+req.body.CHILD_ID+"');", function (err, recordset){
+request.query("insert into VAC values('"+req.body.VAC_NO+","+req.body.NAME+"','"+req.body.STATUS+","+req.body.CHILD_ID+"');", function (err, recordset){
     if (err){
         console.log(err);}
     else
@@ -453,7 +453,7 @@ request.query("insert into VAC values('"+req.body.VAC_NO+"','"+req.body.CHILD_ID
 app.put('/Vac/:id', function (req, res) {
 res.header("Access-Control-Allow-Origin","*");
 var request = new sql.Request();
-request.query("update VAC set VAC_NO='"+req.body.VAC_NO+"' where CHILD_ID='"+req.params.id+"';", function (err, recordset){
+request.query("update VAC set VAC_NO='"+req.body.VAC_NO+"', NAME='"+req.body.NAME+"', STATUS='"+req.body.STATUS+"' where CHILD_ID='"+req.params.id+"';", function (err, recordset){
     if (err){
         console.log(err);}
     else

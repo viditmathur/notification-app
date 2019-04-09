@@ -27,10 +27,15 @@ function postDoctorDetails(){
 		'DOC_UID':docId,
 		'DESIGNATION':docDesignation,
 		'EMAIL_ID':docEmailId,
-		'PASSWORD':docPassword,
 		'DNAME':docName
 	};
+	var datatosend2={
+		'EMAIL_ID':docEmailId,
+		'PASSWORD':docPassword,
+		'ROLE':'DOCTOR'
+	};
 	var url1='http://localhost:8080/Doctor';
+	var url2='http://localhost:8080/Login';
 	$.ajax({
             url: url1,
             type: 'POST',
@@ -39,7 +44,16 @@ function postDoctorDetails(){
 						success: function(res){
             alert('Doctors data has been added to database');
         }
-        });
+				});
+		$.ajax({
+				url: url2,
+				type: 'POST',
+				dataType: 'json',
+				data:datatosend2,
+				success: function(res){
+				alert('Doctors data has been added to database');
+		}
+		});
 }
 </script>
 </head>

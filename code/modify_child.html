@@ -20,9 +20,33 @@
 	function modify(){
 		var childId=document.getElementById('child_id').value;
         var url1='http://localhost:8080/Detail/'+childId;
-        //data to send needs to be updated
         
+        //data to send needs to be updated
+        $.ajax({
+							url: url1,
+							type: 'GET',
+							dataType: 'json',
+							success: function(res){
+                            alert('Details found');
+                            document.getElementById('f_id').value=res.F_NAME;
+                            document.getElementById('child_id').value=res.CHILD_ID;
+                            document.getElementById('m_id').value=res.M_NAME;
+                            document.getElementById('doc_uid').value=res.DOC_UID;
+                            document.getElementById('address').value=res.ADDRESS;
+                            document.getElementById('email_id').value=res.EMAIL;
+                            document.getElementById('adhar_card').value=res.ADHAR_CARD;
+                            
+                            
+					}
+					});
         var datatosend={
+          "F_NAME":document.getElementById('f_id').value,
+                            "CHILD_ID":document.getElementById('child_id').value,
+                            "M_NAME":document.getElementById('m_id').value,
+                            "DOC_UID":document.getElementById('doc_uid').value,
+                            "ADDRESS":document.getElementById('address').value,
+                            "EMAIL":document.getElementById('email_id').value,
+                            "ADHAR_CARD":document.getElementById('adhar_card').value
 		};
 		$.ajax({
 							url: url1,
@@ -103,18 +127,7 @@
                                         <span class="focus-input100"></span>
                                     </div>
                                     
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="height is required">
-                                        <span class="label-input100">Height</span>
-                                        <input class="input100" type="text" id="height" placeholder="Enter Height">
-                                        <span class="focus-input100"></span>
-                                    </div>
-                
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Weight id is required">
-                                        <span class="label-input100">weight</span>
-                                        <input class="input100" type="text" id="weight" placeholder="Enter Weight">
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                    
+                                  
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
                                         <span class="label-input100">Doctor id</span>
                                         <input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
