@@ -17,10 +17,11 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-    var childId=document.getElementById('child_id').value;
-    var url1='http://localhost:8080/Detail/'+childId;
+    var childId='';
+    var url1='';
     function modify(){
-		
+        childId=document.getElementById('child_id').value;
+        url1='http://localhost:8080/Detail/'+childId;
         var datares={};
        
         $.ajax({
@@ -43,6 +44,8 @@
                     });
                 }
     function submit(){
+        childId=document.getElementById('Child_id').value;
+        url1='http://localhost:8080/Detail/'+childId;
         var datatosend={
         "F_NAME":document.getElementById('f_id').value,
         "CHILD_ID":document.getElementById('child_id').value,
@@ -125,12 +128,7 @@
                                         <span class="focus-input100"></span>
                                     </div>
                 
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
-                                        <span class="label-input100">Child id</span>
-                                        <input class="input100" type="text" id="child_id" placeholder="Enter Child id">
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                    
+                                   
                                   
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
                                         <span class="label-input100">Doctor id</span>

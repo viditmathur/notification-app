@@ -16,10 +16,13 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
+var childId='';
+		var url1='';
+        var url2='';
 	function delet(){
-		var childId=document.getElementById('child_id').value;
-		var url1='http://localhost:8080/Detail/'+childId;
-        var url2='http://localhost:8080/Child/'+childId;
+		 childId=document.getElementById("Child_id").value;
+		 url1='http://localhost:8080/Detail/'+childId;
+         url2='http://localhost:8080/Child/'+childId;
 		$.ajax({
 							url: url1,
 							type: 'DELETE',

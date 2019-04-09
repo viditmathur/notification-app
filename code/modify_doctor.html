@@ -17,11 +17,12 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-    var docUid=document.getElementById('docs_uid').value;
-    var url1='http://localhost:8080/Doctor/'+docUid;
+    var docUid='';
+    var url1='';
+    var datarec={};
     function modify(){
-        var datarec={};
-	
+        docUid=document.getElementById("doctor_uid").value;
+        url1='http://localhost:8080/Doctor/'+docUid;
         
         $.ajax({
 							url: url1,
@@ -29,20 +30,24 @@
 							dataType: 'json',
 							success: function(res){
                                 datarec=res;
-                                Document.getElementById('docs_uid').value=datarec.DOC_UID;
-                                Document.getElementById('name').value=datarec.NAME;
-                                Document.getElementById('email_id').value=datarec.EMAIL_ID;
-                                Document.getElementById('designation').value=datarec.DESIGNATION;
+                                document.getElementById('docs_uid').value=datarec.DOC_UID;
+                                document.getElementById('name').value=datarec.NAME;
+                                document.getElementById('email_id').value=datarec.EMAIL_ID;
+                                document.getElementById('designation').value=datarec.DESIGNATION;
                                 
 					}
                     });
         }
         function submit(){
+            
+        docUid=document.getElementById('doctor_uid').value;
+        url1='http://localhost:8080/Doctor/'+docUid;
+        
 		var datatosend={
-            "DOC_UID":Document.getElementById('docs_uid').value,
-            "NAME":Document.getElementById('name').value,
-            "EMAIL_ID":Document.getElementById('email_id').value,
-            "DESIGNATION":Document.getElementById('designation').value
+            "DOC_UID":document.getElementById('doctor_uid').value,
+            "NAME":document.getElementById('name').value,
+            "EMAIL_ID":document.getElementById('email_id').value,
+            "DESIGNATION":document.getElementById('designation').value
 		};
 		
 		$.ajax({
@@ -106,12 +111,7 @@
             
 
                             <form class="login100-form validate-form">
-                                <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor id is required">
-                                    <span class="label-input100">Doctor id</span>
-                                    <input class="input100" type="text" id="docs_uid" placeholder="Enter Doctor id">
-                                    <span class="focus-input100"></span>
-                                </div>
-
+                              
                                 <div class="wrap-input100 validate-input m-b-26" data-validate="Doctor name is required">
                                     <span class="label-input100">Doctor Name</span>
                                     <input class="input100" type="text" id="name" placeholder="Enter Doctor name">

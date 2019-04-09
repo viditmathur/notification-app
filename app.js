@@ -98,7 +98,7 @@ app.delete('/Doctor/:id',  (req,res,next)=>{
 
         }
         else
-        {res.send(doctor);
+        {res.send('doctor found');
         }
 
         });
@@ -165,7 +165,7 @@ app.get('/Child/',(req,res,next)=>{
     
     request.query("select * from CHILD ;",(err,recordset)=>{
         if(err){
-    console.log(error);}
+    console.log(err);}
     else
    { res.status(302).send(recordset);
    }
@@ -183,7 +183,7 @@ app.delete('/Child/:id',  (req,res,next)=>{
 
     }
     else
-    {res.send(doctor);
+    {res.send('child found');
     }
 
     });
@@ -260,7 +260,7 @@ app.delete('/Login/:id',  (req,res,next)=>{
 
     }
     else
-    {res.send(doctor);
+    {res.send('data found');
     }
 
     });
@@ -345,7 +345,7 @@ app.delete('/Detail/:id',  (req,res,next)=>{
 
     }
     else
-    {res.send(doctor);
+    {res.send('child found');
     }
 
     });

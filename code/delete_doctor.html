@@ -16,9 +16,11 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-	function delet(){
-		var docUid=document.getElementById('docs_uid').value;
-        var url1='http://localhost:8080/Doctor/'+docUid;
+		var docUid='';
+        var url1='';
+    function delet(){
+		 docUid=document.getElementById("doctor_uid").value;
+         url1='http://localhost:8080/Doctor/'+docUid;
 		$.ajax({
 							url: url1,
 							type: 'DELETE',
