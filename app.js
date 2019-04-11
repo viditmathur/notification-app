@@ -67,7 +67,7 @@ app.get('/Doctor/:id',(req,res,next)=>{
 			if(err){
 		console.log(error);}
 		else
-       { res.status(302).send(recordset.recordset[0]);
+       { res.status(200).send(recordset.recordset[0]);
 	   }
 		
 		})
@@ -82,7 +82,7 @@ app.get('/Doctor/',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset);
+   { res.status(200).send(recordset);
    }
     
     })
@@ -152,7 +152,7 @@ app.get('/Child/:id',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   { res.status(200).send(recordset.recordset[0]);
    }
     
     })
@@ -167,7 +167,7 @@ app.get('/Child/',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset);
+   { res.status(200).send(recordset);
    }
     
     })
@@ -181,7 +181,7 @@ app.get('/ChildId/:id',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   { res.status(200).send(recordset.recordset[0]);
     console.log(recordset.recordset[0]);
    }
     
@@ -262,7 +262,7 @@ app.get('/Login/',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   { res.status(200).send(recordset.recordset[0]);
    }
     
     })
@@ -323,7 +323,7 @@ app.get('/Detail/:id',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   { res.status(200).send(recordset.recordset[0]);
    }
     
     })
@@ -338,7 +338,7 @@ app.get('/Detail/',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset);
+   { res.status(200).send(recordset);
    }
     
     })
@@ -408,7 +408,7 @@ app.get('/Vac/:id',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset.recordsets);
+   { res.status(200).send(recordset.recordsets);
     console.log(recordset.recordsets[0]);
    }
     
@@ -424,7 +424,7 @@ app.get('/Vac/',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset);
+   { res.status(200).send(recordset);
    }
     
     })
