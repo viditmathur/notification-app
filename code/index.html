@@ -38,6 +38,7 @@ function login()
 		},
         success:function(res){
 		datares=res;
+		localStorage.setItem('Email',datares.EMAIL);
 		if(datares.PASSWORD==password)
         {
             if(datares.ROLE=='ADMIN')
@@ -47,10 +48,10 @@ function login()
             else{
                 if(datares.ROLE=='DOCTOR')
                 {
-                    location.href('doctor_view.html');
+                    location.href='doctor_view.html';
                 }
                 else{
-                    location.href('child_view.html');        
+                    location.href='user_view.html';        
                 }
             }
         }

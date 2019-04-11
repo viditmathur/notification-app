@@ -173,6 +173,20 @@ app.get('/Child/',(req,res,next)=>{
     })
     
 });
+app.get('/ChildId/:id',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    
+    request.query("select * from DETAIL where EMAIL_ID='"+req.params.id+"';",(err,recordset)=>{
+        if(err){
+    console.log(err);}
+    else
+   { res.status(302).send(recordset.recordset[0]);
+   }
+    
+    })
+    
+});
 
 app.delete('/Child/:id',  (req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
@@ -230,8 +244,9 @@ app.get('/Login/:id',(req,res,next)=>{
     console.log(err);}
     else
    {
+       
        res.status(200).send(recordset.recordset[0]);
-       console.log(recordset.recordset[0].PASSWORD+' backend');
+       console.log(recordset.recordset[0]);
    }
     
     })
@@ -401,7 +416,8 @@ app.get('/Vac/:id',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   { res.status(302).send(recordset.recordsets);
+    console.log(recordset.recordsets[0]);
    }
     
     })
@@ -441,7 +457,7 @@ app.delete('/Vac/:id',  (req,res,next)=>{
 app.post('/Vac', function (req, res) {
 res.header("Access-Control-Allow-Origin","*");
 var request = new sql.Request();
-request.query("insert into VAC values('"+req.body.VAC_NO+","+req.body.NAME+"','"+req.body.STATUS+","+req.body.CHILD_ID+"');", function (err, recordset){
+request.query("insert into VAC values('"+req.body.VAC_NO+"','"+req.body.NAME+"','"+req.body.STATUS+"','"+req.body.CHILD_ID+"');", function (err, recordset){
     if (err){
         console.log(err);}
     else

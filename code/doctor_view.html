@@ -10,12 +10,116 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+//Login Authentication for user.
+var childId='';
+var vac_no='';
+var vac_status='';
+var vac_name='';
+var DataRetrieved={};
+
+function submit()
+{
+	childId=document.getElementById("Child_id").value;
+	
+	url1='http://localhost:8080/Vac/'+childId;
+    
+    $.ajax({
+        url: url1,
+        type: 'GET',
+		dataType: 'json',
+		error:function(err){
+			if (err){
+				console.log(err)
+			}
+		},
+        success:function(res){
+            DataRetrieved=res;
+        alert("Vaccination status found");
+        var Columns = [];
+        for (var i = 0; i < DataRetrieved.length; i++) {
+            for (var key in DataRetrieved[i]) {
+                if (Columns.indexOf(key) === -1 && key!="Department" && key!="Designation" && key!="Login_Credentials") {
+                    Columns.push(key);
+                }
+            }
+        }
+
+        var table = document.createElement("table");
+
+
+        var tr = table.insertRow(-1);            
+
+        for (var i = 0; i < Columns.length; i++) {
+            var th = document.createElement("th");      
+            th.innerHTML = Columns[i];
+            tr.appendChild(th);
+        }
+
+        for (var i = 0; i < DataRetrieved.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < Columns.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = DataRetrieved[i][Columns[j]];
+            }
+        }
+      var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+        }
+    });
+}
+function display_table()
+    {
+      
+      var Columns = [];
+        for (var i = 0; i < DataRetrieved.length; i++) {
+            for (var key in DataRetrieved[i]) {
+                if (Columns.indexOf(key) === -1 && key!="Department" && key!="Designation" && key!="Login_Credentials") {
+                    Columns.push(key);
+                }
+            }
+        }
+
+        var table = document.createElement("table");
+
+
+        var tr = table.insertRow(-1);            
+
+        for (var i = 0; i < Columns.length; i++) {
+            var th = document.createElement("th");      
+            th.innerHTML = Columns[i];
+            tr.appendChild(th);
+        }
+
+        for (var i = 0; i < DataRetrieved.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < Columns.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = DataRetrieved[i][Columns[j]];
+            }
+        }
+      var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+
+    }
+</script>
 </head>
 <body background="images/maxres.jpg">
         
          <nav>
             <a href="doctor_view.html">Home</a> 
-            <a href="view_all.html">View all</a>
+           
             <a href="doctor_update.html">child vacctination update</a>
             <div style="float:right"><a href="index.html" ]>Logout</a></div>  
          </nav>  
@@ -31,19 +135,22 @@
 
                                 <form class="login100-form validate-form">
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
-                            
                                         <span class="label-input100">Child id</span>
                                         <input class="input100" type="text" id="Child_id" placeholder="Enter Child id">
                                         <span class="focus-input100"></span>
                                     </div>                                
                                 </form>
-                                    <div class="container-login100-form-btn">
-
-                                        <button onclick="" class="login100-form-btn">
-                                            Search
-                                        </button>
-                                    </div>
-
+                                <div class="container-login100-form-btn">
+                                    <button onclick="submit()" class="login100-form-btn">
+                                        Search
+                                    </button>
+                                </div>
+                                <div  class="container-login100-form-btn" >
+                                    <button onclick="display_table()" class="login100-form-btn">
+                                        View
+                                    </button>
+                                </div>
+                          
 
                             </div>
                         </div>

@@ -10,26 +10,68 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+//Login Authentication for user.
+var childId='';
+var vac_no='';
+var vac_status='';
+var vac_name='';
+var datares={};
 
+function submit()
+{
+	childId=document.getElementById("Child_id").value;
+	vac_no=document.getElementById("vac_no").value;
+	vac_status=document.getElementById("vac_status").value;
+	vac_name=document.getElementById("vac_name").value;
+	
+	url1='http://localhost:8080/Vac/';
+    datares={
+        "VAC_NO":vac_no,
+        "NAME":vac_name,
+        "STATUS":vac_status,
+        "CHILD_ID":childId
+    }
+    $.ajax({
+        url: url1,
+        type: 'POST',
+        data:datares,
+		dataType: 'json',
+		error:function(err){
+			if (err){
+				console.log(err)
+			}
+		},
+        success:function(res){
+        alert("Vaccination added succesfully");
+        }
+    });
+}
+</script>
 </head>
 <body background="images/maxres.jpg">
         
             
                 <nav>
                         <a href="doctor_view.html">Home</a> 
-                        <a href="view_all.html">View all</a>
+                   
                         <a href="doctor_update.html">child vacctination update</a> 
-                   <div style="float:right"><a href="index.html" ]>Logout</a></div>  
+                   <div style="float:right"><a href="index.html" >Logout</a></div>  
                 </nav>    
 
-    <div class="split left">
+    
     
             <div class="limiter">
                     <div class="container-login100">
                         <div class="wrap-login100">
                             <div class="login100-form-title">
                                 <span class="login100-form-title-1">
-                                    View
+                                    Vaccination Update
                                 </span>
                             </div>
             
@@ -40,25 +82,7 @@
                                         <input class="input100" type="text" id="Child_id" placeholder="Enter Child id">
                                         <span class="focus-input100"></span>
                                     </div>                                
-                                </form>
-                                    <div class="container-login100-form-btn">
-                                        <button onclick="modify()" class="login100-form-btn">
-                                            Search
-                                        </button>
-                                    </div>
-                      
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="limiter">
-                        <div class="container-login100">
-                            <div class="wrap-login100">
-                                <div class="login100-form-title">
-                                    <span class="login100-form-title-1">
-                                        Modify
-                                    </span>
-                                </div>
+                                
                 
     
                                     <form class="login100-form validate-form">
@@ -90,7 +114,7 @@
                                         </div>   
                     
 
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -99,14 +123,14 @@
     </div>  
     
     
-    <div class="split right">
+   
     
             <div class="limiter">
                     <div class="container-login100">
                         <div class="wrap-login100">
                             <div class="login100-form-title">
                                 <span class="login100-form-title-1">
-                                    View
+                                    Vaccination Chart
                                 </span>
                             </div>
             
@@ -119,7 +143,7 @@
                     </div>
                 </div>
 
-    </div> 
+  
 
 </body>
 </html>

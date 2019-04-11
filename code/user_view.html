@@ -10,9 +10,60 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    var childId='';
+    var url1='';
+    function fetch(){
+
+        email=localStorage.getItem('Email');
+        url1='http://localhost:8080/ChildId/'+email;
+        $.ajax({
+							url: url1,
+							type: 'GET',
+                            dataType: 'json',
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                            localStorage.setItem('Child',res.CHILD_ID);
+                            }
+                        });
+    }
+    function submit(){
+        childId=localStorage.getItem('Child');
+        url1='http://localhost:8080/Detail/'+childId;
+        var datares={};
+       
+        $.ajax({
+							url: url1,
+							type: 'GET',
+							dataType: 'json',
+							success: function(res){
+                            
+                            alert('Details found');
+                            document.getElementById('f_id').value=res.F_NAME;
+                            document.getElementById('child_id').value=res.CHILD_ID;
+                            document.getElementById('m_id').value=res.M_NAME;
+                            document.getElementById('doc_uid').value=res.DOC_UID;
+                            document.getElementById('address').value=res.ADDRESS;
+                            document.getElementById('email_id').value=res.EMAIL;
+                            document.getElementById('adhar_card').value=res.ADHAR_CARD;
+                            
+                            
+					}
+                    });
+                }
+</script>
 
 </head>
-<body background="images/maxres.jpg">
+<body background="images/maxres.jpg" onload="fetch()">
         
             
                 <nav>
@@ -20,8 +71,7 @@
                    <div style="float:right"><a href="index.html" ]>Logout</a></div>  
                 </nav>    
 
-    <div class="split left">
-    
+
             <div class="limiter">
                     <div class="container-login100">
                         <div class="wrap-login100">
@@ -35,13 +85,13 @@
 
                                 <form class="login100-form validate-form">
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Father id is required">
-                                        <span class="label-input100">Father id</span>
+                                        <span class="label-input100">Father Name</span>
                                         <input class="input100" type="text" id="f_id" placeholder="Enter Father id">
                                         <span class="focus-input100"></span>
                                     </div>
                 
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Mother id is required">
-                                        <span class="label-input100">Mother id</span>
+                                        <span class="label-input100">Mother Name</span>
                                         <input class="input100" type="text" id="m_id" placeholder="Enter Mother id">
                                         <span class="focus-input100"></span>
                                     </div>
@@ -76,31 +126,6 @@
                                         <span class="focus-input100"></span>
                                     </div>
                                     
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="height is required">
-                                        <span class="label-input100">Height</span>
-                                        <input class="input100" type="text" id="height" placeholder="Enter Height">
-                                        <span class="focus-input100"></span>
-                                    </div>
-                
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Weight id is required">
-                                        <span class="label-input100">weight</span>
-                                        <input class="input100" type="text" id="weight" placeholder="Enter Weight">
-                                        <span class="focus-input100"></span>
-                                    </div>
-    
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="time is required">
-                                        <span class="label-input100">Timeing born</span>
-                                        <input class="input100" type="time" id="timing" placeholder="Enter time">
-                                        <span class="focus-input100"></span>
-                                    </div>
-                
-                                    <div class="wrap-input100 validate-input m-b-26" data-validate="date no is required">
-                                        <span class="label-input100">Date born</span>
-                                        <input class="input100" type="date" id="date_born" placeholder="Enter date">
-                                        <span class="focus-input100"></span>
-                                    </div>
-    
-    
                                     </form>
                           
 
@@ -110,10 +135,9 @@
                 </div>
 
             
-    </div>  
+
     
     
-    <div class="split right">
     
             <div class="limiter">
                     <div class="container-login100">
@@ -133,7 +157,7 @@
                     </div>
                 </div>
 
-    </div> 
+  
 
 </body>
 </html>
