@@ -32,12 +32,12 @@
                                 }
                             },
 							success: function(res){
-                            localStorage.setItem('Child',res.CHILD_ID);
+                            chilId=res.CHILD_ID;
+                            submit();
                             }
                         });
     }
     function submit(){
-        childId=localStorage.getItem('Child');
         url1='http://localhost:8080/Detail/'+childId;
         var datares={};
        
