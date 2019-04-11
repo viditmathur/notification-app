@@ -27,6 +27,8 @@ function login()
 	userid=document.getElementById("userid").value;
 	password=document.getElementById("password").value;
 	url1='http://localhost:8080/Login/'+userid;
+	
+	localStorage.setItem('Email',datares.EMAIL);
 	$.ajax({
         url: url1,
         type: 'GET',
@@ -38,7 +40,6 @@ function login()
 		},
         success:function(res){
 		datares=res;
-		localStorage.setItem('Email',datares.EMAIL);
 		if(datares.PASSWORD==password)
         {
             if(datares.ROLE=='ADMIN')

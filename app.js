@@ -116,7 +116,7 @@ app.post('/Doctor', function (req, res) {
             const msg = {
               to: req.body.EMAIL_ID,
               from: 'viditmathur575@gmail.com',
-              subject: 'New Login Doctor Details have been added to Database',
+              subject: 'New Login for Doctor Details have been added to Database',
               text: process.env.textmessageforlogin,
               html: '<strong>WELOME</strong>',
             };
@@ -182,6 +182,7 @@ app.get('/ChildId/:id',(req,res,next)=>{
     console.log(err);}
     else
    { res.status(302).send(recordset.recordset[0]);
+    console.log(recordset.recordset[0]);
    }
     
     })
@@ -291,16 +292,7 @@ request.query("insert into LOGIN values('"+req.body.EMAIL_ID+"','"+req.body.PASS
         console.log(err);}
     else
     {
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        const msg = {
-          to: req.body.EMAIL_ID,
-          from: 'viditmathur575@gmail.com',
-          subject: 'New Login Details have been added to Database',
-          text: process.env.textmessageforlogin,
-          html: '<strong>WELOME</strong>',
-        };
-        sgMail.send(msg);
-        
+
         res.send("Credentials have been added");
         console.log('Login has been created ');
     }
@@ -462,6 +454,7 @@ request.query("insert into VAC values('"+req.body.VAC_NO+"','"+req.body.NAME+"',
         console.log(err);}
     else
     {
+        
         res.send("Vacs have been added");
         console.log(recordset);
     }
