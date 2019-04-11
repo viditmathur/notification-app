@@ -112,7 +112,15 @@ app.post('/Doctor', function (req, res) {
             console.log(err);}
         else
         {
-        
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+            const msg = {
+              to: req.body.EMAIL_ID,
+              from: 'viditmathur575@gmail.com',
+              subject: 'New Login Doctor Details have been added to Database',
+              text: process.env.textmessageforlogin,
+              html: '<strong>WELOME</strong>',
+            };
+            sgMail.send(msg);
             res.send("'message':'Doctor has  been Created'");
             console.log(' Doctor has been created');
         }
@@ -121,7 +129,7 @@ app.post('/Doctor', function (req, res) {
 
 app.put('/Doctor/:id', function (req, res) {
 	res.header("Access-Control-Allow-Origin","*");
-    var request = new sql.Request();
+    const request = new sql.Request();
     request.query("update DOCS set DNAME='"+req.body.DNAME+"', DESIGNATION ='"+req.body.DESIGNATION+"', EMAIL_ID ='"+req.body.EMAIL_ID+"'  where DOC_ID='"+req.params.id+"';", function (err, recordset){
         if (err){
             console.log(err);}

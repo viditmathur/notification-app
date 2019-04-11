@@ -8,7 +8,7 @@
         "DATABASE":"DOCTORS_VACTINATION",
         "textmessagefordoctor":"Welcome to Vaccination Notiifcation app",
         "textmessageforchild":"Welcome to Vaccination Notiifcation app",
-        "SENDGRID_API_KEY":"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",
+        "SENDGRID_API_KEY":"",
         "textmessageforlogin":""
         
 
