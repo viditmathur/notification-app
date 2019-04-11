@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>User</title>
+	<meta charset="UTF-8">
+	<meta id="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+</head>
+<body background="images/maxres.jpg">
+        
+            
+                <nav>
+                        <a href="doctor_view.html">Home</a> 
+                        <a href="view_all.html">View all</a>
+                        <a href="doctor_update.html">child vacctination update</a> 
+                   <div style="float:right"><a href="index.html" ]>Logout</a></div>  
+                </nav>    
+
+    <div class="split left">
+    
+            <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    View
+                                </span>
+                            </div>
+            
+                            <div class="login100-form validate-form">
+                                <form class="login100-form validate-form">
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
+                                        <span class="label-input100">Child id</span>
+                                        <input class="input100" type="text" id="Child_id" placeholder="Enter Child id">
+                                        <span class="focus-input100"></span>
+                                    </div>                                
+                                </form>
+                                    <div class="container-login100-form-btn">
+                                        <button onclick="modify()" class="login100-form-btn">
+                                            Search
+                                        </button>
+                                    </div>
+                      
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="limiter">
+                        <div class="container-login100">
+                            <div class="wrap-login100">
+                                <div class="login100-form-title">
+                                    <span class="login100-form-title-1">
+                                        Modify
+                                    </span>
+                                </div>
+                
+    
+                                    <form class="login100-form validate-form">
+                                        <div class="wrap-input100 validate-input m-b-26" data-validate="Vacctination is required">
+                                            <span class="label-input100">Vacctination no</span>
+                                            <input class="input100" type="text" id="vac_no" placeholder="Enter Vacctination no">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                    
+                                        
+                                        <div class="wrap-input100 validate-input m-b-26" data-validate="Vacctination is required">
+                                            <span class="label-input100">Vacctination Status</span>
+                                            <input class="input100" type="text" id="vac_status" placeholder="Enter Vacctination Status">
+                                            <span class="focus-input100"></span>
+                                        </div>
+
+                                        
+                                        <div class="wrap-input100 validate-input m-b-26" data-validate="Vacctination name is required">
+                                            <span class="label-input100">Vacctination name</span>
+                                            <input class="input100" type="text" id="vac_name" placeholder="Enter Vacctination name">
+                                            <span class="focus-input100"></span>
+                                        </div>
+        
+                                    </form>
+                                        <div class="container-login100-form-btn">
+                                            <button onclick="submit()" class="login100-form-btn">
+                                                Modify
+                                            </button>
+                                        </div>   
+                    
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+    </div>  
+    
+    
+    <div class="split right">
+    
+            <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    View
+                                </span>
+                            </div>
+            
+                            <div class="login100-form validate-form">
+
+                                 <img src="images/vaccination-chart.jpg" width="100%">
+                                                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div> 
+
+</body>
+</html>
