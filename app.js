@@ -115,7 +115,7 @@ app.post('/Doctor', function (req, res) {
             sgMail.setApiKey(process.env.SENDGRID_API_KEY);
             const msg = {
               to: req.body.EMAIL_ID,
-              from: 'viditmathur575@gmail.com',
+              from: 'smrth2102@gmail.com',
               subject: 'New Login for Doctor Details have been added to Database',
               text: process.env.textmessageforlogin,
               html: '<strong>WELOME</strong>',
