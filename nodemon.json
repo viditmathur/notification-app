@@ -6,9 +6,9 @@
         "PASSWORD":"password",
         "SERVER":"CYG336",
         "DATABASE":"DOCTORS_VACTINATION",
-        "textmessagefordoctor":"",
-        "textmessageforchild":"",
-        "SENDGRID_API_KEY":"",
+        "textmessagefordoctor":"Welcome to Vaccination Notiifcation app",
+        "textmessageforchild":"Welcome to Vaccination Notiifcation app",
+        "SENDGRID_API_KEY":"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",
         "textmessageforlogin":""
         
 

@@ -17,42 +17,51 @@
 </script>
 <script type="text/javascript">
 //Login Authentication for user.
+var userid='';
+var password='';
+var url1='';
+var datares={};
+
 function login()
 {
-	var userid=document.getElementById('userid').value;
-	var password=document.getElementById('password').value;
-	var url1='http://localhost:8080/Login/'+userid;
+	userid=document.getElementById("userid").value;
+	password=document.getElementById("password").value;
+	url1='http://localhost:8080/Login/'+userid;
 	$.ajax({
         url: url1,
         type: 'GET',
-        dataType: 'json',
-        success: function(res){
-        var data={};
-        data=res;
-        if(res.password==password)
+		dataType: 'json',
+		error:function(err){
+			if (err){
+				console.log(err)
+			}
+		},
+        success:function(res){
+		datares=res;
+		if(datares.PASSWORD==password)
         {
-            if(data.ROLE=='ADMIN')
+            if(datares.ROLE=='ADMIN')
             {
-                location.href('admin.html');
+                location.href='admin.html';
             }
             else{
-                if(data.ROLE=='DOCTOR')
+                if(datares.ROLE=='DOCTOR')
                 {
-                    location.href('doctorview.html');
+                    location.href('doctor_view.html');
                 }
                 else{
-                    location.href('childview.html');        
+                    location.href('child_view.html');        
                 }
             }
         }
         else{
             alert('Authentication Failed');
-            location.href('index.html');
         }
-        }
+
+		console.log('hi '+res+' data '+datares);
+	}
     });
 }
-
 </script>
 </head>
 <body background="images/maxres.jpg">
@@ -78,15 +87,14 @@ function login()
 						<input class="input100" type="password" id="password" placeholder="Enter password">
 						<span class="focus-input100"></span>
 					</div>
-
+				</form>
+					
 					<div class="container-login100-form-btn">
-						<a href="admin.html">	<button onclick="login()" class="login100-form-btn" >
-							Login
-						</button>
-					</a>
+							<button onclick="login()" class="login100-form-btn" >
+								Login
+							</button>		
 					</div>
 
-					</form>
 					
 				
 			</div>

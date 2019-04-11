@@ -112,17 +112,9 @@ app.post('/Doctor', function (req, res) {
             console.log(err);}
         else
         {
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        const msg = {
-          to: req.body.EMAIL_ID,
-          from: 'smrth2102@gmail.com',
-          subject: "Doctor's details have been added to database",
-          text: process.env.textmessagefordoctor,
-          html: '<strong>WELCOME</strong>',
-        };
-        sgMail.send(msg);
-            res.send("Doctor has  been Created");
-            console.log(recordset);
+        
+            res.send("'message':'Doctor has  been Created'");
+            console.log(' Doctor has been created');
         }
     });
 });
@@ -229,7 +221,9 @@ app.get('/Login/:id',(req,res,next)=>{
         if(err){
     console.log(err);}
     else
-   { res.status(302).send(recordset.recordset[0]);
+   {
+       res.status(200).send(recordset.recordset[0]);
+       console.log(recordset.recordset[0].PASSWORD+' backend');
    }
     
     })
@@ -244,7 +238,7 @@ app.get('/Login/',(req,res,next)=>{
         if(err){
     console.log(error);}
     else
-   { res.status(302).send(recordset);
+   { res.status(302).send(recordset.recordset[0]);
    }
     
     })
@@ -277,7 +271,7 @@ request.query("insert into LOGIN values('"+req.body.EMAIL_ID+"','"+req.body.PASS
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         const msg = {
           to: req.body.EMAIL_ID,
-          from: 'smrth2102@gmail.com',
+          from: 'viditmathur575@gmail.com',
           subject: 'New Login Details have been added to Database',
           text: process.env.textmessageforlogin,
           html: '<strong>WELOME</strong>',
@@ -285,7 +279,7 @@ request.query("insert into LOGIN values('"+req.body.EMAIL_ID+"','"+req.body.PASS
         sgMail.send(msg);
         
         res.send("Credentials have been added");
-        console.log(recordset);
+        console.log('Login has been created ');
     }
 });
 });

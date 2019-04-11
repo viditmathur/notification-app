@@ -1,0 +1,68 @@
+<html>
+    <head>
+            <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+          </script>
+          <script type="text/javascript">
+          //Login Authentication for user.
+          var userid='';
+          var password='';
+          var url1='';
+          var data={};
+          
+          function continue_validation(){
+       
+          }
+          function login()
+          {
+              userid=document.getElementById("userid").value;
+              password=document.getElementById("password").value;
+              url1='http://localhost:8080/Login/'+userid;
+              $.ajax({
+                  url: url1,
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(res){
+                  data=res;
+                  if(res.PASSWORD==password)
+                  { 
+                      if(res.ROLE=='ADMIN')
+                      {
+                          location.href('admin.html');
+                      }
+                      else{
+                          if(res.ROLE=='DOCTOR')
+                          {
+                              location.href('doctor_view.html');
+                          }
+                          else{
+                              location.href('child_view.html');        
+                          }
+                      }
+                  }
+                  else{
+                      alert('Authentication Failed');
+                      location.href('index.html');
+                  }
+          
+                }
+              });
+          }
+          </script>
+          
+    </head>
+    <body>
+        <form>
+            Username 
+            <input type="text" id="userid">
+            password
+            <input type="password" id="password">
+           
+            <input type="button" onclick="login()">Submit</input>
+            <input type="button" onclick="continue_validation()">hdus</input>
+            
+        </form>
+    </body>
+</html>
