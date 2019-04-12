@@ -44,15 +44,15 @@ function login()
         {
             if(datares.ROLE=='ADMIN')
             {
-                location.href='admin.html';
+                location.href='admin.html?'+userid;
             }
             else{
                 if(datares.ROLE=='DOCTOR')
                 {
-                    location.href='doctor_view.html';
+                    location.href='doctor_view.html?'+userid;
                 }
                 else{
-                    location.href='user_view.html';        
+                    location.href='user_view.html?'+userid;        
                 }
             }
         }

@@ -20,7 +20,7 @@
     var url1='';
     function fetch(){
 
-        email=localStorage.getItem('Email');
+        email=Request.params;
         url1='http://localhost:8080/ChildId/'+email;
         $.ajax({
 							url: url1,
