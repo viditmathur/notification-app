@@ -16,12 +16,18 @@
   crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-    var childId='';
+    
     var url1='';
     function fetch(){
-
-        email=Request.params;
-        url1='http://localhost:8080/ChildId/'+email;
+    var childId='';
+    var url = document.location.href,
+    params = url.split('?')[1].split('&'),
+    data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+        url1='http://localhost:8080/ChildId/'+data.email;
         $.ajax({
 							url: url1,
 							type: 'GET',
@@ -32,29 +38,30 @@
                                 }
                             },
 							success: function(res){
-                            chilId=res.CHILD_ID;
-                            submit();
+                            document.getElementById('child_id').value=res.CHILD_ID;
+                            
                             }
                         });
     }
     function submit(){
+       var childId=document.getElementById('child_id').value;
+       
         url1='http://localhost:8080/Detail/'+childId;
         var datares={};
-       
         $.ajax({
 							url: url1,
 							type: 'GET',
 							dataType: 'json',
 							success: function(res){
-                            
+                            datares=res;
                             alert('Details found');
-                            document.getElementById('f_id').value=res.F_NAME;
-                            document.getElementById('child_id').value=res.CHILD_ID;
-                            document.getElementById('m_id').value=res.M_NAME;
-                            document.getElementById('doc_uid').value=res.DOC_UID;
-                            document.getElementById('address').value=res.ADDRESS;
-                            document.getElementById('email_id').value=res.EMAIL;
-                            document.getElementById('adhar_card').value=res.ADHAR_CARD;
+                            document.getElementById('f_id').value=datares.F_NAME;
+                            document.getElementById('child_id').value=datares.CHILD_ID;
+                            document.getElementById('m_id').value=datares.M_NAME;
+                            document.getElementById('docs_uid').value=datares.DOC_UID;
+                            document.getElementById('address').value=datares.ADDRESS;
+                            document.getElementById('email_id').value=datares.EMAIL;
+                            document.getElementById('adhar_card').value=datares.ADHAR_CARD;
                             
                             
 					}
@@ -82,7 +89,12 @@
                             </div>
             
                             <div class="login100-form validate-form">
-
+                                <div  class="container-login100-form-btn" >
+                                    <button onclick="submit()" class="login100-form-btn">
+                                       Click to View Detatils
+                                    </button>
+                                </div>
+                          
                                 <form class="login100-form validate-form">
                                     <div class="wrap-input100 validate-input m-b-26" data-validate="Father id is required">
                                         <span class="label-input100">Father Name</span>
