@@ -372,7 +372,7 @@ request.query("insert into DETAIL values('"+req.body.F_NAME+"','"+req.body.M_NAM
         const msg = {
           to: req.body.EMAIL_ID,
           from: 'smrth2102@gmail.com',
-          subject: 'Child Details have been added to Database',
+          subject: 'Child Details for Child Id ='+req.body.CHILD_ID+' have been added to Database',
           text: process.env.textmessageforchild,
           html: '<strong>WELOME</strong>',
         };
@@ -473,4 +473,26 @@ request.query("update VAC set VAC_NO='"+req.body.VAC_NO+"', NAME='"+req.body.NAM
         console.log(recordset);
     }
 });
+});
+app.post('/Notification', function (req, res) {
+	res.header("Access-Control-Allow-Origin","*");
+    var request = new sql.Request();
+    request.query("select DETAIL.EMAIL_ID,DATEDAY from DETAIL,CHILD where CHILD.CHILD_ID=DETAIL.CHILD_ID and CHILD.CHILD_ID="+req.body.CHILD_ID+";", function (err, recordset){
+        if (err){
+            console.log(err);}
+        else
+        {
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+            const msg = {
+              to: recordset.recordset.EMAIL_ID,
+              from: 'smrth2102@gmail.com',
+              subject: 'Following Vaccinations,  '+req.body.Vaccinations+' are due for Child with Child Id='+req.body.CHILD_ID+' born on '+recordset.recordset.DATEDAY+'. Kindly get these vaccinations done by Due date.',
+              text: process.env.textmessageforlogin,
+              html: '<strong>Vaccination Status Update</strong>',
+            };
+            sgMail.send(msg);
+            res.send("'message':'mail has been sent'");
+            console.log('mail has been sent');
+        }
+    });
 });

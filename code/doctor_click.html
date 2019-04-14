@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Doctors</title>
+	<meta charset="UTF-8">
+	<meta id="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    
+    var url1='';
+    function vac1(){
+    var childId=document.getElementById('Child_id');
+        url1='http://localhost:8080/Notification/';
+        var datatosend={
+            "CHILD_ID":childId,
+            "Vactinations":'Tuberculosis,Hepatitis B'
+        };
+        $.ajax({
+							url: url1,
+							type: 'POST',
+                            dataType: 'json',
+                            data:datatosend,
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                                alert('Reminder Notification for Tuberculosis,Hepatitis B vaccines have been sent');
+                            }
+                        });
+    }
+    function vac2(){
+    var childId=document.getElementById('Child_id');
+        url1='http://localhost:8080/Notification/';
+        var datatosend={
+            "CHILD_ID":childId,
+            "Vactinations":' Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Haemophilus influenzae type b (Hib) Polio (IPV) Pneumococcal (PCV) Rotavirus (RV) Influenza (flu)'
+        };
+        $.ajax({
+							url: url1,
+							type: 'POST',
+                            dataType: 'json',
+                            data:datatosend,
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                                alert('Reminder Notification for  Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Haemophilus influenzae type b (Hib) Polio (IPV) Pneumococcal (PCV) Rotavirus (RV) Influenza (flu) vaccines have been sent');
+                            }
+                        });
+    }
+    function vac3(){
+    var childId=document.getElementById('Child_id');
+        url1='http://localhost:8080/Notification/';
+        var datatosend={
+            "CHILD_ID":childId,
+            "Vactinations":' Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Haemophilus influenzae type b (Hib) Polio (IPV) Pneumococcal (PCV) Rotavirus (RV) Influenza (flu)'
+        };
+        $.ajax({
+							url: url1,
+							type: 'POST',
+                            dataType: 'json',
+                            data:datatosend,
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                                alert('Reminder Notification for  Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Haemophilus influenzae type b (Hib) Polio (IPV) Pneumococcal (PCV) Rotavirus (RV) Influenza (flu) vaccines have been sent');
+                            }
+                        });
+    }
+    function vac4(){
+    var childId=document.getElementById('Child_id');
+        url1='http://localhost:8080/Notification/';
+        var datatosend={
+            "CHILD_ID":childId,
+            "Vactinations":'Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Polio (IPV) Rotavirus (RV)'
+        };
+        $.ajax({
+							url: url1,
+							type: 'POST',
+                            dataType: 'json',
+                            data:datatosend,
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                                alert('Reminder Notification for Diphtheria, tetanus, and whooping cough (pertussis)(DTaP) Polio (IPV) Rotavirus (RV) vaccines have been sent');
+                            }
+                        });
+    }
+    function vac5(){
+    var childId=document.getElementById('Child_id');
+        url1='http://localhost:8080/Notification/';
+        var datatosend={
+            "CHILD_ID":childId,
+            "Vactinations":'Haemophilus influenzae type b (Hib) Polio (IPV) '
+        };
+        $.ajax({
+							url: url1,
+							type: 'POST',
+                            dataType: 'json',
+                            data:datatosend,
+                            error:function(err){
+                                if (err){
+                                    console.log(err)
+                                }
+                            },
+							success: function(res){
+                                alert('Reminder Notification for Haemophilus influenzae type b (Hib) Polio (IPV) vaccines have been sent');
+                            }
+                        });
+    }
+</script>
+
+</head>
+<body background="images/maxres.jpg">
+        
+         <nav>    
+            <a href="doctor_view.html">Home</a> 
+            <a href="doctor_click.html">Mail sending</a>  
+            <a href="doctor_update.html">child vacctination update</a>
+            <div style="float:right"><a href="index.html">Logout</a></div>  
+        
+         </nav>  
+
+            <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    View
+                                </span>
+                            </div>
+
+                                <form class="login100-form validate-form">
+                                    <div class="wrap-input100 validate-input m-b-26" data-validate="Child id is required">
+                                        <span class="label-input100">Child id</span>
+                                        <input class="input100" type="text" id="Child_id" placeholder="Enter Child id">
+                                        <span class="focus-input100"></span>
+                                    </div>                                
+                                </form>
+                                    <div class="container-login100-form-btn">
+                                        <button onclick="" class="login100-form-btn">
+                                            Search
+                                        </button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="login100-form-title">
+                                <span class="login100-form-title-1">
+                                    Mail
+                                </span>
+                             </div>
+                             <div class="login100-form validate-form">
+                            <h3>At Birth -</h3>  
+                            Tuberculosis,Hepatitis B
+                            <div class="container-login100-form-btn">
+                                    <button onclick="vac1()" class="login100-form-btn">
+                                      Vactination 1
+                                    </button>
+                                </div>  
+                            <br>
+                            <h3>At 6 Weeks -</h3> Diphtheria, tetanus, and whooping cough (pertussis)(DTaP)
+                            Haemophilus influenzae type b (Hib)
+                            Polio (IPV)
+                            Pneumococcal (PCV)
+                            Rotavirus (RV)
+                            Influenza (flu)
+                            <div class="container-login100-form-btn">
+                                    <button onclick="vac2()" class="login100-form-btn">
+                                       Vactination 2
+                                    </button>
+                                </div> 
+                            
+                                <h3>At 10 Weeks -</h3> Diphtheria, tetanus, and whooping cough (pertussis)(DTaP)
+                            Haemophilus influenzae type b (Hib)
+                            Polio (IPV)
+                            Pneumococcal (PCV)
+                            Rotavirus (RV)
+                            Influenza (flu)
+                            <div class="container-login100-form-btn">
+                                    <button onclick="vac3()" class="login100-form-btn">
+                                       Vactination 3
+                                    </button>
+                                </div> 
+
+                                <h3>At 14 Weeks -</h3> Diphtheria, tetanus, and whooping cough (pertussis)(DTaP)
+                            Polio (IPV)
+                            Rotavirus (RV)
+                            <div class="container-login100-form-btn">
+                                    <button onclick="vac4()" class="login100-form-btn">
+                                       Vactination 4
+                                    </button>
+                                </div> 
+
+                                <h3>At 6 months -</h3> 
+                            Haemophilus influenzae type b (Hib)
+                            Polio (IPV)
+                            <div class="container-login100-form-btn">
+                                    <button onclick="vac5()" class="login100-form-btn">
+                                       Vactination 5
+                                    </button>
+                                </div> 
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+</body>
+</html>
