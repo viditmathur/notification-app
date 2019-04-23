@@ -27,7 +27,7 @@
 		var adharCard=document.getElementById('adhar_card').value;
 		var timing=document.getElementById('timing').value;
 		var dateDay=document.getElementById('date_born').value;
-		var password=document.getElementById('pasword').value;
+		var password=document.getElementById('password').value;
 		var height=document.getElementById('height').value;
 		var weight=document.getElementById('weight').value;
 		var gender=document.getElementById('gender').value;
@@ -51,7 +51,8 @@
 		}
 		var url1='http://localhost:8008/Detail';
 		var url2='http://localhost:8080/Child';
-		
+		if (document.getElementById('child_id').value!='')
+		{
 		$.ajax({
 							url: url1,
 							type: 'POST',
@@ -70,6 +71,10 @@
 				alert('Child data has been added to database');
 		}
 		});
+	}
+	else{
+		alert('Empty feilds');
+	}
 	}
 	</script>
 </head>
@@ -94,13 +99,13 @@
 
 				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Father id is required">
-						<span class="label-input100">Father id</span>
+						<span class="label-input100">Father Name</span>
 						<input class="input100" type="text" id="f_id" placeholder="Enter Father id">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Mother id is required">
-						<span class="label-input100">Mother id</span>
+						<span class="label-input100">Mother Name</span>
 						<input class="input100" type="text" id="m_id" placeholder="Enter Mother id">
 						<span class="focus-input100"></span>
 					</div>
@@ -120,6 +125,11 @@
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Weight id is required">
 						<span class="label-input100">weight</span>
 						<input class="input100" type="text" id="weight" placeholder="Enter Weight">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Weight id is required">
+						<span class="label-input100">Gender</span>
+						<input class="input100" type="text" id="gender" placeholder="Enter Gender">
 						<span class="focus-input100"></span>
 					</div>
 					

@@ -30,10 +30,10 @@
 							dataType: 'json',
 							success: function(res){
                                 datarec=res;
-                                document.getElementById('docs_uid').value=datarec.DOC_UID;
-                                document.getElementById('name').value=datarec.NAME;
-                                document.getElementById('email_id').value=datarec.EMAIL_ID;
-                                document.getElementById('designation').value=datarec.DESIGNATION;
+                                document.getElementById("doctor_uid").value=res.DOC_UID;
+                                document.getElementById("name").value=res.DNAME;
+                                document.getElementById("email_id").value=res.EMAIL_ID;
+                                document.getElementById("designation").value=res.DESIGNATION;
                                 
 					}
                     });
@@ -44,10 +44,10 @@
         url1='http://localhost:8080/Doctor/'+docUid;
         
 		var datatosend={
-            "DOC_UID":document.getElementById('doctor_uid').value,
-            "NAME":document.getElementById('name').value,
-            "EMAIL_ID":document.getElementById('email_id').value,
-            "DESIGNATION":document.getElementById('designation').value
+            "DOC_UID":document.getElementById("doctor_uid").value,
+            "DNAME":document.getElementById("name").value,
+            "EMAIL_ID":document.getElementById("email_id").value,
+            "DESIGNATION":document.getElementById("designation").value
 		};
 		
 		$.ajax({

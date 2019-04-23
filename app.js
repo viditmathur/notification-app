@@ -130,7 +130,7 @@ app.post('/Doctor', function (req, res) {
 app.put('/Doctor/:id', function (req, res) {
 	res.header("Access-Control-Allow-Origin","*");
     const request = new sql.Request();
-    request.query("update DOCS set DNAME='"+req.body.DNAME+"', DESIGNATION ='"+req.body.DESIGNATION+"', EMAIL_ID ='"+req.body.EMAIL_ID+"'  where DOC_ID='"+req.params.id+"';", function (err, recordset){
+    request.query("update DOCS set DNAME='"+req.body.DNAME+"', DESIGNATION ='"+req.body.DESIGNATION+"', EMAIL_ID ='"+req.body.EMAIL_ID+"'  where DOC_UID='"+req.params.id+"';", function (err, recordset){
         if (err){
             console.log(err);}
         else
