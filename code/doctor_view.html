@@ -21,7 +21,6 @@ var childId='';
 var vac_no='';
 var vac_status='';
 var vac_name='';
-var DataRetrieved={};
 
 function submit()
 {
@@ -39,12 +38,11 @@ function submit()
 			}
 		},
         success:function(res){
-            DataRetrieved=res;
         alert("Vaccination status found");
         var Columns = [];
-        for (var i = 0; i < DataRetrieved.length; i++) {
-            for (var key in DataRetrieved[i]) {
-                if (Columns.indexOf(key) === -1 && key!="Department" && key!="Designation" && key!="Login_Credentials") {
+        for (var i = 0; i < res.length; i++) {
+            for (var key in res[i]) {
+                if (Columns.indexOf(key) === -1 ) {
                     Columns.push(key);
                 }
             }
@@ -61,13 +59,13 @@ function submit()
             tr.appendChild(th);
         }
 
-        for (var i = 0; i < DataRetrieved.length; i++) {
+        for (var i = 0; i < res.length; i++) {
 
             tr = table.insertRow(-1);
 
             for (var j = 0; j < Columns.length; j++) {
                 var tabCell = tr.insertCell(-1);
-                tabCell.innerHTML = DataRetrieved[i][Columns[j]];
+                tabCell.innerHTML = res[i][Columns[j]];
             }
         }
       var divContainer = document.getElementById("showData");
@@ -76,43 +74,7 @@ function submit()
         }
     });
 }
-function display_table()
-    {
-      
-      var Columns = [];
-        for (var i = 0; i < DataRetrieved.length; i++) {
-            for (var key in DataRetrieved[i]) {
-                if (Columns.indexOf(key) === -1 && key!="Department" && key!="Designation" && key!="Login_Credentials") {
-                    Columns.push(key);
-                }
-            }
-        }
 
-        var table = document.createElement("table");
-
-
-        var tr = table.insertRow(-1);            
-
-        for (var i = 0; i < Columns.length; i++) {
-            var th = document.createElement("th");      
-            th.innerHTML = Columns[i];
-            tr.appendChild(th);
-        }
-
-        for (var i = 0; i < DataRetrieved.length; i++) {
-
-            tr = table.insertRow(-1);
-
-            for (var j = 0; j < Columns.length; j++) {
-                var tabCell = tr.insertCell(-1);
-                tabCell.innerHTML = DataRetrieved[i][Columns[j]];
-            }
-        }
-      var divContainer = document.getElementById("showData");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-
-    }
 </script>
 </head>
 <body background="images/maxres.jpg">
@@ -144,16 +106,14 @@ function display_table()
                                         Search
                                     </button>
                                 </div>
-                                <div  class="container-login100-form-btn" >
-                                    <button onclick="display_table()" class="login100-form-btn">
-                                        View
-                                    </button>
-                                </div>
                           
 
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="container-login100" id ='showData'>
+
                 </div>
 
 </body>
