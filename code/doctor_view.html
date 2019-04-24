@@ -37,10 +37,11 @@ function submit()
 				console.log(err)
 			}
 		},
-        success:function(res){
+        success:function(data){
         alert("Vaccination status found");
         var Columns = [];
-        for (var i = 0; i < res.length; i++) {
+        var res=data[0];
+        for (var i in res) {
             for (var key in res[i]) {
                 if (Columns.indexOf(key) === -1 ) {
                     Columns.push(key);
